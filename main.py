@@ -1,38 +1,30 @@
-jokes = ["Robbers", "Calder police ive been robbed!",],
-["tanks", "Youre welcome"],
-["pencil", "Nevermind its pointless!"]
-
-def tell_joke(topic, punchline): 
-    input("Knock knock")
-    input(topic.capitalize()) # Topic of the joke 
-    print(punchline) # Signifies the joke is ending 
-def find_joke(choice):
+jokes = [
+    ["robbers", "Calder police — I've been robbed!"], # Lists of lines used in joke picked
+    ["tanks", "You're welcome!"],                     
+    ["pencils", "Never mind — it's pointless!"]
+]
+def tell_joke(topic, punchline): # A paramter which stores and empty value that can be changed later
+    input("Knock knock!  ") # Allows user to input a response
+    input(topic.capitalize()) # Makes joke begin with an uppercased letter
+    print(punchline)
+def find_joke(choice): # 
     for joke in jokes:
-        if jokes[0] == choice:
-            return joke 
-        return None
-play = input("Do you want to hear a joke?")
-
+        if joke[0] == choice:
+            return joke
+    return None
+play = input("Do you want to hear a joke? ").lower().strip()
 while play == "yes":
-    choice = input("Choose a joke: Robbers, Tanks, or Pencils: ")
+    choice = input("Choose a joke (robbers, tanks, pencils): ").lower().strip()
     joke = find_joke(choice)
     if joke:
-        tell_joke(joke[0],joke[1])
-    else: 
-        print("That joke doesnt exist")
-    
-    play = input("Do you want to hear another joke or are you finished?:  ")
-
-    print("Thanks for hearing our jokes!")
-
-    # This function tells people the knock knock joke
-if joke == "finished":
-    rate = int(input("Please rate our game 1-10! "))
-    final_score = int(rate * 10)
-    print(str(final_score) + " percent satisfaction rate")
-    friend = input("Would you recommend this game to a friend? ")
-
-    if friend == "yes" or friend == "maybe":
-        print("Thanks, we appreciate it. ")
+        tell_joke(joke[0], joke[1])
     else:
-        print("Sorry you did not enjoy it. ")
+        print("That joke does not exist.")
+        add = input("Do you want to add your own joke? (yes or no): ").lower().strip()
+        if add == "yes":
+            new_topic = input("Enter a joke topic: ").lower().strip()
+            new_punchline = input("Enter the punchline: ")
+            jokes.append([new_topic, new_punchline])
+            print("Your joke was added!")
+    play = input("Do you want to hear another joke? (yes or no): ").lower().strip()
+print("Thanks for playing!")
