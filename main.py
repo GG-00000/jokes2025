@@ -1,30 +1,31 @@
+jokes = ["Robbers", "Calder police ive been robbed!",],
+["tanks", "Youre welcome"],
+["pencil", "Nevermind its pointless!"]
 
+def tell_joke(topic, punchline): 
+    input("Knock knock")
+    input(topic.capitalize()) # Topic of the joke 
+    print(punchline) # Signifies the joke is ending 
+def find_joke(choice):
+    for joke in jokes:
+        if jokes[0] == choice:
+            return joke 
+        return None
+play = input("Do you want to hear a joke?")
 
+while play == "yes":
+    choice = input("Choose a joke: Robbers, Tanks, or Pencils: ")
+    joke = find_joke(choice)
+    if joke:
+        tell_joke(joke[0],joke[1])
+    else: 
+        print("That joke doesnt exist")
+    
+    play = input("Do you want to hear another joke or are you finished?:  ")
 
-# make this performance task ready for submission
-# To give the user a fun experience hearing knock knock jokes
+    print("Thanks for hearing our jokes!")
 
-joke = input("Do you want to hear a joke? ")
-if joke == "no":
-    print("Okay suit yourself!")
-while joke == "yes":
-    print("Great, Let's Play")
-    question = input("Do you want to hear a joke about robbers, tanks, or pencils? ")
-    if question == "robbers":
-        input("Knock Knock ")
-        input("Calder")
-        print("Calder police - I've been robbed!")
-        joke = input("Do you want to hear another joke or are you finished? ")
-    elif question == "tanks":
-        input("Knock Knock ")
-        input("Tank ")
-        input("You are welcome! ")
-        joke = input("Do you want to hear another joke or are you finished? ")
-    elif question == "pencils":
-        input("Knock Knock ")
-        input("Broken pencil ")
-        input("Nevermind, it's pointless! ")
-        joke = input("Do you want to hear another joke or are you finished? ")
+    # This function tells people the knock knock joke
 if joke == "finished":
     rate = int(input("Please rate our game 1-10! "))
     final_score = int(rate * 10)
