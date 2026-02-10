@@ -7,16 +7,16 @@ def tell_joke(topic, punchline): # A paramter which stores and empty value that 
     input("Knock knock!  ") # Allows user to input a response
     input(topic.capitalize()) # Makes joke begin with an uppercased letter
     print(punchline)
-def find_joke(choice): # 
-    for joke in jokes:
+def find_joke(choice, joke_list): 
+    for joke in joke_list:
         if joke[0] == choice:
             return joke
     return None
-def run_joke():
+def run_joke(joke_list):
     play = input("Do you want to hear a joke? ").lower().strip()
     while play == "yes":
         choice = input("Choose a joke (robbers, tanks, pencils): ").lower().strip()
-        joke = find_joke(choice)
+        joke = find_joke(choice,joke_list)
         if joke:
             tell_joke(joke[0], joke[1])
         else:
@@ -25,8 +25,8 @@ def run_joke():
             if add == "yes":
                 new_topic = input("Enter a joke topic: ").lower().strip()
                 new_punchline = input("Enter the punchline: ")
-                jokes.append([new_topic, new_punchline])
+                joke_list.append([new_topic, new_punchline])
                 print("Your joke was added!")
         play = input("Do you want to hear another joke? (yes or no): ").lower().strip()
     print("Thanks for playing!")
-run_joke()
+run_joke(jokes)
