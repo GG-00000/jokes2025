@@ -12,19 +12,21 @@ def find_joke(choice): #
         if joke[0] == choice:
             return joke
     return None
-play = input("Do you want to hear a joke? ").lower().strip()
-while play == "yes":
-    choice = input("Choose a joke (robbers, tanks, pencils): ").lower().strip()
-    joke = find_joke(choice)
-    if joke:
-        tell_joke(joke[0], joke[1])
-    else:
-        print("That joke does not exist.")
-        add = input("Do you want to add your own joke? (yes or no): ").lower().strip()
-        if add == "yes":
-            new_topic = input("Enter a joke topic: ").lower().strip()
-            new_punchline = input("Enter the punchline: ")
-            jokes.append([new_topic, new_punchline])
-            print("Your joke was added!")
-    play = input("Do you want to hear another joke? (yes or no): ").lower().strip()
-print("Thanks for playing!")
+def run_joke():
+    play = input("Do you want to hear a joke? ").lower().strip()
+    while play == "yes":
+        choice = input("Choose a joke (robbers, tanks, pencils): ").lower().strip()
+        joke = find_joke(choice)
+        if joke:
+            tell_joke(joke[0], joke[1])
+        else:
+            print("That joke does not exist.")
+            add = input("Do you want to add your own joke? (yes or no): ").lower().strip()
+            if add == "yes":
+                new_topic = input("Enter a joke topic: ").lower().strip()
+                new_punchline = input("Enter the punchline: ")
+                jokes.append([new_topic, new_punchline])
+                print("Your joke was added!")
+        play = input("Do you want to hear another joke? (yes or no): ").lower().strip()
+    print("Thanks for playing!")
+run_joke()
